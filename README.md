@@ -1,2 +1,3 @@
-# Rumourshield
-# Rumour Detection System (NLP + Google Fact Check API)  This project detects and verifies rumours by analyzing text from **social media posts, news articles, and blogs**. It uses **basic NLP preprocessing** and validates claims using the **Google Fact Check Tools API**.  ---
+Rumourshield
+A rumour detection project that checks text from social media posts, news articles, and blogs.
+It uses basic NLP to process the text and Google Fact Check Tools API to verify the claim.
