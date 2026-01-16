@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from src.preprocess import clean_text
 from src.predict import simple_rumour_signal, extract_factcheck_results
 from src.factcheck_api import search_fact_checks
-from src.db import init_db, save_check, get_history
 from src.utils import safe_strip, build_response
 
 # Load environment variables from .env
@@ -18,23 +17,17 @@ CORS(app)  # allow React frontend to call backend
 # Get API key from .env
 API_KEY = os.getenv("GOOGLE_FACTCHECK_API_KEY")
 
-# Create DB + table on startup
-init_db()
 
 
 @app.route("/api/health", methods=["GET"])
 def health():
-    """
-    Check if backend is running
-    """
+    """Check if backend is running"""
     return jsonify({"status": "ok"})
 
 
 @app.route("/api/check", methods=["POST"])
 def check():
-    """
-    Main API endpoint to check rumour + fact-check verification
-    """
+    """Main API endpoint to check rumour + fact-check verification"""
     data = request.get_json() or {}
     text = safe_strip(data.get("text"))
 
