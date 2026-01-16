@@ -2,10 +2,7 @@ from typing import Dict, Any, List
 
 
 def simple_rumour_signal(cleaned_text: str) -> Dict[str, Any]:
-    """
-    Beginner-friendly heuristic (not ML):
-    Gives a 'risk score' based on suspicious words.
-    """
+    
     suspicious_words = [
         "shocking", "breaking", "must share", "forward", "viral",
         "secret", "exposed", "cure", "guaranteed", "100%",
@@ -38,9 +35,7 @@ def simple_rumour_signal(cleaned_text: str) -> Dict[str, Any]:
 
 
 def extract_factcheck_results(api_response: Dict[str, Any]) -> List[Dict[str, str]]:
-    """
-    Extracts top fact check sources from API response.
-    """
+ 
     results = []
 
     if not api_response or "claims" not in api_response:
@@ -50,7 +45,7 @@ def extract_factcheck_results(api_response: Dict[str, Any]) -> List[Dict[str, st
         text = claim.get("text", "Unknown claim")
         claim_reviews = claim.get("claimReview", [])
 
-        for review in claim_reviews[:2]:  # top 2 reviews
+        for review in claim_reviews[:2]:  
             results.append({
                 "claim": text,
                 "publisher": review.get("publisher", {}).get("name", "Unknown"),

@@ -1,13 +1,7 @@
 import re
 
 def clean_text(text: str) -> str:
-    """
-    Basic NLP preprocessing:
-    - lowercase
-    - remove URLs
-    - remove special characters
-    - remove extra spaces
-    """
+    
     if not text:
         return ""
 
